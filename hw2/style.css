@@ -1,0 +1,239 @@
+@keyframes rotacija1{
+
+    from{
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes rotacija2{
+  
+    from{
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate(-360deg);
+    }
+  }
+  
+  
+  body{
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, rgb(22, 114, 22),rgb(38, 151, 94));
+      
+  }
+  .cell{
+      background-color: rgb(229, 123, 53);
+  }
+  h1{
+      text-align: center;
+      padding: 40px;
+      font-style: italic;
+      font-weight: bold;
+      /* text-decoration: underline; */
+      text-shadow: -2px 2px 7px rgb(61, 14, 14);
+  }
+  
+  .pizza-slice {
+      position: relative;
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent; /* Adjust the width to change the size of the pizza slice */
+      border-right: 100px solid transparent; /* Adjust the width to change the size of the pizza slice */
+      border-bottom: 150px solid #d46a13; /* Color of the pizza slice, you can use any color you like */
+      border-radius: 50%;
+      margin: 10px;
+      display: inline-block;
+       
+    }
+    .osnova{
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 85px solid transparent;
+      border-right: 85px solid transparent;
+      border-bottom: 128px solid rgb(246, 206, 8);
+      border-radius: 100%;
+      top: px;
+      left: -85px;
+  
+    }
+    .shroom{
+      position:absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgb(68, 8, 8);
+      top: 35px;
+      left: -7px;
+    }
+    
+    .pizza-slice .shroom:nth-child(2){
+      left: 15px;
+      top: 83px;
+    }
+    .pizza-slice .shroom:nth-child(3){
+      left: -35px;
+      top: 70px;
+    } 
+    .pizza-slice .shroom:nth-child(5){
+      left: -30px;
+      top: 100px;
+    } 
+    
+    
+    
+    .pepperoni {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: rgb(202, 35, 35);
+      
+    }
+    
+    .pizza-slice .pepperoni:nth-child(6){
+      left: 5px;
+      top: 47px;
+    }
+    .pizza-slice .pepperoni:nth-child(7){
+      left: -15px;
+      top: 87px;
+    }
+    .pizza-slice .pepperoni:nth-child(8){
+      left: -30px;
+      top: 40px;
+    }
+    .pepperoni_sliced1{
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left:15px solid  rgb(202, 35, 35) ;
+      border-right: 15px solid transparent;
+      border-bottom: 23px solid  rgb(202, 35, 35);
+      border-radius: 50%;
+      left: -8px;
+      top: 10px;
+      
+    }
+    .pepperoni_sliced2{
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left:15px solid  rgb(202, 35, 35) ;
+      border-right: 17px solid transparent;
+      border-bottom: 25px solid  rgb(202, 35, 35);
+      border-radius: 50%;
+      left: 32px;
+      top: 70px;
+    }
+    
+    .pepperoni_sliced3  {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left:17px solid  transparent ;
+      border-right: 15px solid rgb(202, 35, 35);
+      border-bottom: 25px solid  rgb(202, 35, 35);
+      border-radius: 50%;
+      left: -70px;
+      top: 78px;
+    }
+    
+    .pizza-slice-container.topleft {
+      position: absolute;
+      top:10%;
+      left: 5%;
+      transform: translateX(-50%);
+      animation: rotacija1 2s ease-in-out infinite;
+    }
+    .pizza-slice-container.topright {
+      position: absolute;
+      top:65%;
+      left: 5%;
+      transform: translateX(-50%);
+      animation: rotacija1 2s ease-in-out infinite;
+    }
+    .pizza-slice-container.bottomleft {
+      position: absolute;
+      top:10%;
+      left: 80%;
+      transform: translateX(-50%);
+      animation: rotacija2 2s ease-in-out infinite;
+    }
+    .pizza-slice-container.bottomright {
+      position: absolute;
+      top:65%;
+      left: 80%;
+      transform: translateX(-50%);
+      animation: rotacija2 2s ease-in-out infinite;
+    }
+  
+  
+  .custom_button {
+  text-decoration: solid;
+   background-color:  rgb(222, 30, 30);
+   color: white;
+   padding: 10px 20px;
+   border:outset;
+   border-radius: 0%;
+   cursor: pointer;
+   transition: background-color 0.3s,color 0.3s;
+   
+  }
+  
+  .custom_button:hover {
+    background-color: green;
+    color: #fff;
+  }
+  
+  #moving_button:active{
+    animation: movebutton 0.1s;
+  }
+  
+  @keyframes movebutton {
+    0%{
+      transform: translate(0, 0);
+    }
+    50%{
+      transform: translate(2px, 2px);
+    }
+    100%{
+      transform: translate(0, 0);
+    }
+  }
+  textarea{
+    background-color: rgb(142, 202, 142);
+    color: rgb(24, 22, 21);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  select{
+    background-color: rgb(142, 202, 142);
+  }
+  .vnes_ime{
+    background-color: rgb(142, 202, 142);
+    font-weight: 700;
+  }
+  
+  input[type="radio"]{
+    accent-color: rgb(142, 202, 142);
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]{
+    accent-color: rgb(142, 202, 142);
+    cursor: pointer;
+  }
+  
+    
+    
+    
+    
+  
+    
+  
