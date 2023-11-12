@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Clone</title>
+    <link rel="stylesheet">
+</head>
+<body>
+    <style>
+        #game-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+#keyboard button {
+    padding: 12px;
+    margin: 3px;
+    text-align: center;
+    background-color: lightgray;
+    cursor: pointer;
+    background-color: rgb(224, 224, 111);
+}
+
+#timer, #message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 40px;
+}
+.keyboard{
+    display: grid;
+    padding: 10px;
+    grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+    justify-content: center;
+}
+.correct{
+    background-color: rgb(107, 151, 107);
+}
+.incorrect{
+    background-color: rgb(228, 144, 144);
+}
+
+    </style>
+    <div id="game-board"></div>
+    <div id="keyboard" class="keyboard"></div>
+    <div id="timer">Time left: 60</div>
+    <div id="message"></div>
+    <button id="play-again" style="display: none;">Play Again</button>
+    <script src="script.js"></script>
+
+    <script>
+        const words = ['marko', 'bunte', 'world', 'jazzy', 'fuzzy']; // Add more words
+let selectedWord = words[Math.floor(Math.random() * words.length)];
+let currentGuess = [];
+let guesses = [];
+let timer;
+let timeLeft = 60;
+
+const gameBoard = document.getElementById('game-board');
+const keyboard = document.getElementById('keyboard');
+const timerElement = document.getElementById('timer');
+const messageElement = document.getElementById('message');
+const playAgainButton = document.getElementById('play-again');
+
+function initializeKeyboard() {
+    const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    letters.forEach(letter => {
+        let button = document.createElement('button');
+        button.textContent = letter;
+        button.addEventListener('click', () => handleKeyPress(letter));
+        keyboard.appendChild(button);
+    });
+}
+
+
+
+function initializeBoardWithHints() {
+    let hintPositions = [];
+    while (hintPositions.length < 2) {
+        let pos = Math.floor(Math.random() * 5);
+        if (!hintPositions.includes(pos)) {
+            hintPositions.push(pos);
+        }
+    }
+
+    for (let i = 0; i < 5; i++) {
+        let row = document.createElement('div');
+        row.className = 'row';
+        for (let j = 0; j < 5; j++) {
+            let cell = document.createElement('div');
+            cell.className = 'cell';
+
+            // Pre-fill with hint letters
+            if (hintPositions.includes(j)) {
+                cell.textContent = selectedWord[j].toUpperCase();
+                cell.classList.add('pre-filled'); // Add a class to style or identify pre-filled cells
+            }
+
+            row.appendChild(cell);
+        }
+        gameBoard.appendChild(row);
+    }
+}
+
+function handleKeyPress(key) {
+    const rows = document.querySelectorAll('.row');
+    const currentRow = rows[guesses.length];
+    const cells = currentRow.querySelectorAll('.cell:not(.pre-filled)');
+
+    // Ensure currentGuess is aligned with non pre-filled cells
+    currentGuess = Array.from(currentRow.querySelectorAll('.cell'))
+                        .filter(cell => !cell.classList.contains('pre-filled'))
+                        .map(cell => cell.textContent.toLowerCase());
+
+    if (currentGuess.length < 5 - cells.length) { // Adjust for pre-filled cells
+        currentGuess.push(key);
+        updateBoardWithHints();
+        checkGuess();
+    }
+}
+
+function updateBoardWithHints() {
+    const rows = document.querySelectorAll('.row');
+    const currentRow = rows[guesses.length];
+    const cells = Array.from(currentRow.querySelectorAll('.cell'))
+                       .filter(cell => !cell.classList.contains('pre-filled'));
+
+    currentGuess.forEach((letter, index) => {
+        cells[index].textContent = letter.toUpperCase();
+    });
+}
+
+
+function startTimer() {
+    timer = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            timerElement.textContent = `Time left: ${timeLeft}`;
+        } else {
+            endGame(false);
+        }
+    }, 1000);
+}
+
+function handleKeyPress(key) {
+    if (currentGuess.length < 5) {
+        currentGuess.push(key);
+        updateBoard();
+        checkGuess();
+    }
+}
+
+function updateBoard() {
+    const rows = document.querySelectorAll('.row');
+    const currentRow = rows[guesses.length];
+    const cells = currentRow.querySelectorAll('.cell');
+
+    currentGuess.forEach((letter, index) => {
+        cells[index].textContent = letter.toUpperCase();
+    });
+}
+
+function checkGuess() {
+    if (currentGuess.length === 5) {
+        const guessString = currentGuess.join('');
+        const rows = document.querySelectorAll('.row');
+        const currentRow = rows[guesses.length];
+        const cells = currentRow.querySelectorAll('.cell');
+        if (guessString === selectedWord) {
+            cells.forEach(cell=>{
+                cell.classList.add('correct');
+            });
+            endGame(true);
+        } else {
+            cells.forEach(cell => {
+                cell.classList.add('incorrect');
+            });
+            guesses.push(currentGuess);
+            currentGuess = [];
+
+            if (guesses.length === 5) { // Max number of guesses reached
+                endGame(false);
+            }
+        }
+    }
+}
+
+
+function endGame(won) {
+    clearInterval(timer);
+    messageElement.textContent = won ? "You've won!" : "Time's up!";
+    playAgainButton.style.display = 'block';
+}
+
+playAgainButton.addEventListener('click', () => {
+    // Reset the game state
+    currentGuess = [];
+    guesses = [];
+    timeLeft = 60;
+    timerElement.textContent = `Time left: ${timeLeft}`;
+    messageElement.textContent = '';
+    selectedWord = words[Math.floor(Math.random() * words.length)];
+
+    // Clear the game board
+    const rows = document.querySelectorAll('.row');
+    rows.forEach(row => {
+        let cells = row.querySelectorAll('.cell');
+        cells.forEach(cell => {
+            cell.textContent = '';
+            cell.classList.remove('correct', 'incorrect', 'pre-filled'); // Remove color classes
+        });
+    });
+    while (gameBoard.firstChild) {
+        gameBoard.removeChild(gameBoard.firstChild);
+    }
+
+    // Reset and start the timer
+    clearInterval(timer);
+    startTimer();
+
+    // Hide the play again button
+    playAgainButton.style.display = 'none';
+    initializeBoardWithHints();
+});
+
+
+initializeBoardWithHints();
+initializeKeyboard();
+startTimer();
+
+    </script>
+</body>
+</html>
