@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient( to right,#097969,#2AAA8A);
+            margin: 0;
+            padding: 0;
+        }
+        .registration-form {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .registration-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: darkgreen;
+        }
+        .form-control {
+            margin-bottom: 10px;
+        }
+        .form-control label {
+            display: block;
+            color: darkgreen;
+        }
+        .form-control input[type="text"],
+        .form-control input[type="email"],
+        .form-control input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Added for box-sizing */
+        }
+        .form-submit {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+        }
+        .form-submit:hover {
+            background-color: darkgreen;
+        }
+        .form-submit a{
+            text-decoration: none;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <h2>Register</h2>
+        <div class="form-control">
+            <label for="username">Username</label>
+            <input type="text" id="usernameRpage" name="username" required>
+        </div>
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input type="email" id="emailRpage" name="email" required>
+        </div>
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" id="password_RPage" name="password" required>
+        </div>
+        <div class="form-control">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-passwordRPage" name="confirm-password" required>
+        </div>
+        <button onclick="
+            prevzemi();
+        " class="form-submit"  id="registerRPage">Register</button>
+    </div>
+
+    <script src="script.js">
+        
+        //     function prevzemi(){
+        //         // alert('func is beeing called')
+        //     // Perform your validation and registration logic here
+        //     const username_RPage = document.getElementById('usernameRpage').value;
+        //     const email_RPage = document.getElementById('emailRpage').value;
+        //     const password_RPage = document.getElementById('password_RPage').value;
+        //     const confirmPassword_RPage = document.getElementById('confirm-passwordRPage').value;
+        //     // alert('func is beeing called2')
+        //     if(password_RPage !== confirmPassword_RPage) {
+        //         alert('Passwords do not match.');
+                
+        //     }else{
+            
+        //     alert('Registration successful!');
+        //     }
+        // }
+        //     // Here you would typically make an AJAX request to your server to register the user
+        //     // For demonstration purposes, we're just showing an alert
+        
+    </script>
+</body>
+</html>

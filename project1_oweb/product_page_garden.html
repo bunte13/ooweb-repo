@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <style>
+      body{
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+.flex-container{
+    top: 0;
+    left: 0;
+    position:fixed;
+    display: flex;
+    width: 100%;
+    height: 15vh;
+    /* ova e bitno ako sakam da go razdealm naslovot od navbarot */
+    justify-content:space-around;
+    /* padding: 0 15px;
+    font-size: 13px; */
+    color: #0d1f1f;
+    background:linear-gradient( to right,#097969,#2AAA8A);
+    padding: 10px;
+    font-size: 30px;
+    align-items: center;
+    box-shadow: 1px 1px 50px black;
+    border-radius: 0 0px 20px 20px;
+    z-index: 100;
+    opacity: 1;
+    
+    
+}
+.naslov p{
+    text-align: left;
+    margin:0;
+    border-radius: 1rem;
+}
+
+
+.nav{
+    
+    display: flex;
+    /* -ms-flex-align: center; */
+    position: relative;
+    justify-content: center;
+    /* za da se gleda dropdown menu */
+    overflow:visible; 
+    max-width: 100%;
+    background-color: #fff;
+    padding: 0 0px;
+    border-radius: 1.2rem;
+    box-shadow: 0 10px 40px rgba(159, 162, 177, .8);
+    right: 4%;
+    
+    
+}
+.username_user{
+    display: flex;
+    position: relative;
+    font-size: 17px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    left: 12%;
+    top: 23px;
+    border:1px solid transparent;
+    margin:0;
+    border-radius: 20px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color:#0d1f1f;
+    font-weight: 300;
+    
+}
+.the_user{
+    font-weight: 700;
+}
+.fas{
+    
+    position: relative;
+    top: -5px;
+    left: 7%;
+    
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 24px;
+    /* z-index: ; */
+    text-decoration: none;
+    color: rgb(233, 207, 207);
+}
+.fas:hover{
+    cursor: pointer;
+}
+.nav-links{
+    display: flex;
+    gap: 1rem;
+    font-size: 16px;
+    margin: 13px;
+}
+.nav-item{
+    padding: 1px;
+    opacity: 1;
+}
+
+/* &:before{
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0px;
+    width: 100%;
+    height: 1px;
+    background-color:#dfe2ea;
+    border-radius: 8px 8px 0 0;
+    opacity: 0;
+    transition: .3s;
+ }
+
+.nav-item:not(.is-active):hover::before{
+    opacity: 1;
+    bottom: 0;
+} */
+/* .nav-item:not(.is-active):hover{
+    color:darkgreen;
+} */
+.nav-indicator{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    transition: 0.2s;
+    height: 10px;
+    z-index: 1;
+    border-radius: 10px 10px 0px 0px;
+
+}
+
+@media (max-width: 580px) {
+    .nav{
+        overflow: auto;
+    }
+    
+}
+/* transformacijata */
+.nav-item, .dropdown-menu li{
+    list-style: none;
+    height: 100%;
+    font-weight: 600;
+    cursor: pointer;
+}
+.nav-item a{
+color:#83818c;
+text-decoration: none;
+/* za da go rashirime tekstot megju elementite vo navbar */
+margin: 0 20px; 
+z-index: 1;
+font-size:25px;
+font-family: 'DM Sans'sans-serif;
+font-weight: 600;
+position: relative;
+}
+/* a{
+    text-decoration: none;
+    color: currentColor;
+} */
+.dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 10px 40px rgba(159, 162, 177, .8);
+    border: 2px solid #ccc; /* Example: solid border with light grey color */
+    border-radius: 10px; 
+    margin-top: 5px;
+    margin-left: -1px;
+    opacity: 0;
+    padding: 10px;
+    transform: translateY(-3px);
+    transition: opacity 0.2s ease, transform 0.5s ease, visibility 0.5s ease;
+    visibility: hidden;
+    /* display: none; */
+}
+.one{
+
+  max-width: 150px;
+
+  
+}
+.two{
+    min-width: 160px;
+}
+.dropdown-menu li{
+    display: flex;
+    flex-direction: row;
+    font-style: italic;
+    justify-content: left;
+    
+}
+
+.nav-item.has-dropdown:hover .dropdown-menu {
+  /* display: block; */
+  
+  visibility: visible; 
+    opacity: 1;
+    transform: translateY(0); 
+   
+}
+
+.one li:hover{
+    background-color:#8fbdbd;
+    color: white;
+    border-radius: 0.5rem;
+    
+}
+.two li:hover{
+    background-color: #8fbdbd;
+    color: white;
+    border-radius: 0.5rem;
+    
+
+}
+
+.section_1{
+    display: flex;
+    justify-content: space-evenly;
+    
+    padding: 40px;
+    /* flex-wrap: wrap; */
+    
+}
+.card {
+    
+    margin: 10px;
+    margin-top: 13%; 
+  position: relative;
+  width: 300px; /* Adjust as needed */
+  height: 450px; /* Adjust as needed */
+  overflow: hidden; 
+  border-radius: 30px; /* Optional for rounded corners */
+  
+  transition: transform 0.2s ease-out;
+  
+}
+
+.card img {
+    position: relative;
+  width: 300px;
+  height: 160px;
+  object-fit: cover; /* Ensures the image covers the whole card */
+  align-self: center;
+  top: 30%;
+  z-index: 20;
+}
+
+.card-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype";
+  color: rgb(34, 29, 29); /* Adjust text color as needed */
+  background-color: rgb(193, 228, 204); /* Semi-transparent overlay */
+  padding: 10px;
+}
+
+.card-text h3 {
+  margin-top: 0;
+}
+.card:hover{
+    
+    box-shadow: 2px 0px 3px rgb(2, 14, 10);
+}
+.fill-button{
+    margin-top: 300px;
+    background:none;
+    border:2px solid white;
+    font-weight: 400;
+    padding:8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative; /* Added for positioning the ::before pseudo-element */
+    overflow: hidden;
+    transition: color 0.4s;
+    z-index:10 ;
+    
+
+}
+.fill-button a{
+    text-decoration: none;
+    color: white;
+}
+.fill-button::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #304640;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s;
+
+}
+.fill-button:hover::before{
+    transform: scaleX(1);
+    
+}
+.fill-button:hover{
+    color: pink;
+    cursor: pointer;
+    
+}
+      
+       
+    </style>
+    <div class="flex-container">
+        <div class="naslov">
+            <img src="EMO_ETERNA_2023.png" height="80px">
+        </div>
+    <nav class="nav">
+        <ul class="nav-links">
+            <li class="nav-item is-active"active-color="#097969">
+        <a href="index.html"  >
+            Home
+            
+        </a>
+    </li>
+    <li class="nav-item has-dropdown" active-color="#478778">
+        <a href="#products-sect"  >
+            Products    
+        </a>
+        <ul class="dropdown-menu one">
+            <li><a href="product_page_garden.html">kitchen</a></li>
+            <li><a href="#">bathroom</a></li>
+            <li><a href="#">garden</a></li>
+          </ul>
+    
+    </li>
+    <li class="nav-item" active-color="#088F8F">
+        <a href="#"  >
+            About   
+        </a>
+    </li>
+    <li class="nav-item has-dropdown" active-color="#5F9EA0">
+        <a href="#"  >
+            Locations
+        </a>
+            <ul class="dropdown-menu two">
+              <li><a href="#">Skopje</a></li>
+              <li><a href="#">Prilep</a></li>
+              <li><a href="#">Ohrid</a></li>
+            </ul>
+          
+        </li>
+        <li class="nav-item" active-color="	#2AAA8A">
+        <a href="#">
+            Contact
+        </a>
+    </li>
+    <li class="nav-item" active-color="#088F8F">
+      <a href="#"  onclick="
+          LogIn();       
+        ">
+          Log-in   
+      </a>
+    </li>
+        <!-- za da se mrda odozdola crtichkata -->
+        <span class="nav-indicator"></span>
+    </ul>
+      <div class="username_user"></div><a href="cart_checkout_page.html" class="fas fa-shopping-cart"></a>
+      
+     
+    </nav>   
+    </div>
+    <!-- treba da go ima istiot header -->
+
+    <section class="section_1">
+        <div class="card">
+            <img src="sliki_gradina/svg1.png" alt="Image Description">
+            <div class="card-text">
+              <h3>Keter Califonia</h3>
+              <p>comfortable 3 seater for your garden</p>
+              <button class="fill-button"><a href="califonia.html">order now</a></button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="sliki_gradina/svg2.png" alt="Image Description">
+            <div class="card-text">
+              <h3>Keter Orlando</h3>
+              <p>a garden set for your family</p>
+              <button class="fill-button"><a href="">order now</a></button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="sliki_gradina/svg3.webp" alt="Image Description">
+            <div class="card-text">
+              <h3>Keter Salemo</h3>
+              <p>comftrable  set for your garden</p>
+              <button class="fill-button"><a href="">order now</a></button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="sliki_gradina/8711245149875_California_3-seater_chaise_longue_and_table_graph_1030x650.png" alt="Image Description">
+            <div class="card-text">
+              <h3>Keter Indigo</h3>
+              <p>comftrable  set for your garden</p>
+              <button class="fill-button"><a href="">order now</a></button>
+            </div>
+          </div>
+          
+    </section>
+
+    <script src="script.js">
+  
+    </script>
+    
+</div>
+    
+</body>
+</html>

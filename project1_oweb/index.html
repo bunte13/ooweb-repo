@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+   
+    
+  <!-- <div id="header-placeholder"></div> -->
+  <div class="flex-container">
+    <div class="naslov">
+        <img src="EMO_ETERNA_2023.png" height="80px">
+    </div>
+<nav class="nav">
+    <ul class="nav-links">
+        <li class="nav-item is-active"active-color="#097969">
+    <a href="index.html"  >
+        Home
+        
+    </a>
+</li>
+<li class="nav-item has-dropdown" active-color="#478778">
+    <a href="#products-sect"  >
+        Products    
+    </a>
+    <ul class="dropdown-menu one">
+        <li><a href="">kitchen</a></li>
+        <li><a href="#">bathroom</a></li>
+        <li><a href="product_page_garden.html">garden</a></li>
+      </ul>
+
+</li>
+<li class="nav-item" active-color="#088F8F">
+    <a href="#"  >
+        About   
+    </a>
+</li>
+<li class="nav-item has-dropdown" active-color="#5F9EA0">
+    <a href="#"  >
+        Locations
+    </a>
+        <ul class="dropdown-menu two">
+          <li><a href="#">Skopje</a></li>
+          <li><a href="#">Prilep</a></li>
+          <li><a href="#">Ohrid</a></li>
+        </ul>
+      
+    </li>
+    <li class="nav-item" active-color="	#2AAA8A">
+    <a href="#">
+        Contact
+    </a>
+</li>
+<li class="nav-item" active-color="#088F8F">
+  <a href="#"  onclick="
+      LogIn();       
+    ">
+      Log-in   
+  </a>
+</li>
+    <!-- za da se mrda odozdola crtichkata -->
+    <span class="nav-indicator"></span>
+</ul>
+  <div class="username_user"></div>
+  <div class="username_user"></div><a href="cart_checkout_page.html" class="fas fa-shopping-cart"></a>
+
+</nav>   
+</div>
+<div class="slider">
+  <div class="slide" style="background-image: url('sliki/CORFU-RELAX-SET-Brown-3.png');"></div>
+  <div class="slide" style="background-image: url('sliki/960x0.webp');"></div>
+  <div class="slide" style="background-image: url('sliki/0523-m0014-m007-m050-asym-m008-m022-keter-brandshop-california.webp');"></div>
+<!-- navigation buttons -->
+  <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+  <a class="next" onclick="changeSlide(+1)">&#10095;</a>
+<!-- indicators -->
+
+<div class="indicators">
+  <span class="dot" onclick="currentSlide(0)"></span>
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+</div>
+</div>
+<div class="naslov_products">pick a category</div>
+<section class="section_1" id="products-sect">
+  
+    <div class="card">
+        <img src="sliki/pinterest-min-1.jpg" alt="Image Description">
+        <div class="card-text">
+          <h3>Toilet</h3>
+          <p>"Revolutionizing Comfort, One Flush at a Time."</p>
+          <button  class="fill-button open-button" onclick="
+          navigateUser('product_page_garden.html');
+          ">take me</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="sliki/from-seasoned-to-sophisticated-next-stage-design-build-img~aa41e1a90c254bc5_4-2129-1-b891ee9.jpg" alt="Image Description">
+        <div class="card-text">
+          <h3>Kitchen</h3>
+          <p>
+            "Crafting Delight in Every Bite,Elevate Your Kitchen with Us."</p>
+          <button  class="fill-button open-button" onclick="
+          navigateUser('product_page_garden.html')
+          ">take me</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="sliki/CORFU-RELAX-SET-Brown-3.png" alt="Image Description">
+        <div class="card-text">
+          <h3>Garden</h3>
+          <p>"Transforming Spaces, Crafting Serenity – Experience the Art of Outdoor Living."</p>
+          <button  class="fill-button open-button" onclick="
+          navigateUser('product_page_garden.html')
+          ">take me</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="sliki/слика1.jpg" alt="Image Description">
+        <div class="card-text">
+          <h3>Pet-shop</h3>
+          <p>""Whiskers, Wags, and Happy Hops, A Wonderland of Fun for Every Furry Friend!""</p>
+          <button  class="fill-button open-button" onclick="
+          navigateUser('product_page_garden.html')
+          ">take me</button>
+        </div>
+      </div>
+
+      <dialog class="modal" id="modal">
+        <h2>SIGN IN</h2>
+        <input type="text" class="js-input-modal_email input-modal" placeholder="email address"> 
+        <div class="no_such_email"></div>
+        <input type="text" class="js-input-modal_password input-modal" placeholder="password">
+        <div class="no_such_pass"></div>
+        <button class="fill-button close-button" onclick="
+          check();
+        " type="button">sign-in</button>
+        <button class="fill-button  registration-button" id="register_button" type="button"><a href="registration_form.html">
+          register</a></button>
+      </dialog>
+      
+</section>
+    <h2 class="brendovi">Brands We Represent</h2>
+<section class="section_2">
+    
+    <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+</section>
+<section class="section_3">
+    
+    <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+      <div class="card_partner">
+        <img src="sliki/partner-icon-shake_0.png">
+      </div>
+</section>
+    
+   
+    <script src="script.js">
+
+        </script>
+</body>
+</html>

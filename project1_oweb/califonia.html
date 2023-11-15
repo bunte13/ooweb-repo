@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.css">
+
+
+</head>
+<body>
+   
+    <style>
+        
+
+        body{
+            background: radial-gradient(rgb(202, 226, 202),rgb(145, 214, 145));
+        }
+        
+        .product{
+            position: absolute;
+            height: 50vh;
+            width: 80vh;
+            background:linear-gradient( to right,#0a8572,#25caa1);
+            box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
+            border-radius: 10px 10px 0 0;
+            top:10%;
+            left:8%;
+            z-index: 2;
+        }
+        .product img{
+            position: absolute;
+            width: 100%;
+             /* box-shadow: 1px 1px 3px #a6a6a6; */
+            
+        }
+        .product-decoration{
+            position:relative;
+            height: 84vh;
+            width: 80vh;
+            background-color:rgb(229, 238, 229);
+            top: 5%;
+            left: 28%;
+            border-radius: 10px;
+            z-index: 1;
+
+        }
+        .album-photos{
+            position: absolute;
+            width: 80vh;
+            height: 20vh;
+            background-color: white;
+            top: 60%;
+            left: 8%;
+            z-index: 2;
+            box-shadow: 4px 4px 25px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 10px 10px;
+        }
+        .album-photos ul{
+            display: flex;
+            list-style-type: none;
+        }
+        
+        
+        .album-photos ul img{
+            width: 24vh;
+            gap: 10px;
+        }
+        .product-decoration .choose_color{
+            position: absolute;
+            left: 56%;
+            top: 41%;
+
+        }
+        .product-decoration .choose_color h3{
+            position:relative;
+            font-size: 15px;
+            right: 20%;
+        }
+        .product-decoration .choose_color ul{
+            top: 20px;
+            display: flex;
+            position: absolute;
+            right: 10%;
+            list-style-type: none;
+        }
+        .product-decoration .choose_color ul li:hover{
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .Description{
+            top: 60%;
+            position: absolute;
+            right: 1%;
+        }
+        .Description h4{
+            position: relative;
+            font-size: 15px;
+            left: 25px;
+            top: 10px;
+        }
+        .product-decoration .pricetag{
+            position: relative;
+            left: 55%;
+            top: 31%;
+            font-size: 28px;
+        }
+        .product-decoration span{
+            font-size: 50px;
+        }
+        .title h1{
+            position: absolute;
+            left: 50%;
+            top: 0%;
+            font-size:50px ;
+
+        }
+        .add_cart{
+            position: inherit;
+            left: 56%;
+            top: 77%;
+        
+        }
+        .add_cart button{
+            padding: 10px;
+            box-shadow: 0px 0px 20px rgba(32, 30, 30, 0.555);
+            border-radius: 10px;
+            background-color: #ff3f40;
+            border: 2px solid transparent;
+            
+        }
+        .add_cart button:hover{
+            
+            cursor:pointer;
+        }
+        .add_cart button:active{
+            transform: scale(0.96);
+        }
+       
+        .fa-heart{
+            position: relative;
+            left: 92%;
+            top: 5%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+
+        } 
+        .liked {
+         color: red; /* Change as per your liking */
+}
+        
+        .album-photos li img:hover{
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .scrollable-div{
+            position: relative;
+            height: 60vh;
+            width: 60vh;
+            right: 2%;
+            z-index: 10;
+            margin-left:72% ;
+            margin-top: -36%;
+            overflow: auto;
+            border-radius: 10px;
+            /* z-index: 100; */
+            background:linear-gradient( to right,#25caa1,#0a8572);
+            box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
+            
+        }
+        .scrollable-div::-webkit-scrollbar-track {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+        }
+
+        /* Styling the scrollbar thumb */
+        .scrollable-div::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 10px;
+            border: 3px solid #f4f4f4; /* Optional: Adds border around the thumb */
+        }
+
+        .scrollable-div::-webkit-scrollbar-thumb:hover {
+            background-color: #555; /* Color when hovering over the scrollbar thumb */
+        }
+
+        /* Styling the scrollbar width */
+        .scrollable-div::-webkit-scrollbar {
+            width: 12px;
+        }
+        .scrollable-div h3 {
+            position: relative;
+            left: 10%;
+            font-size: 30px;
+            width: 250px;
+        }
+        /* .comment-section {
+    max-height: 50vh; /* Adjust as needed */
+    /* overflow-y: auto; Makes it scrollable */
+/* } */ 
+            .input-field{
+                padding: 10px;
+                border-radius: 10px;
+            }
+            .comment-section{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        .comment_layout{
+            height: 100%;
+            width: 40vh;
+            background-color: #8fbeb7;
+            margin: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-shadow: 1px 1px 10px rgb(0, 0, 0,0.5);
+            padding: 6px;
+        }
+        .review-button{
+            border-radius: 5px;
+            background-color: #8fbeb7;
+            
+        }
+        .review-button:hover{
+            cursor:pointer;
+        }
+        .quantity-selector {
+            z-index: 100;
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: 230px;
+            left: 55%;
+        }
+
+        .quantity-selector input {
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+        }
+        .likesCount{
+            position: relative;
+            text-align: center;
+            left: 83%;
+            top: 5%;
+            font-size: 20px;
+            color: white;
+            font-weight: 500;
+        }
+        .fa-shopping-cart{
+            position: absolute;
+            text-decoration: none;
+            right: 5%;
+            top: 3%;
+            font-size: 20px;
+            color: rgb(32, 22, 22);
+        }
+
+      
+
+        
+
+
+
+    </style>
+      <div class="username_user"></div><a href="cart_checkout_page.html" class="fas fa-shopping-cart"></a>
+
+    <section class="order">
+        <div class="product">
+            <img id="productImage" src="sliki_gradina/svg1.png" alt="">
+            <i id="heartIcon" class="fas fa-heart"></i>
+            <span id="likesCount" class="likesCount">10</span>
+        </div>
+        <div class="product-decoration">
+            <div class="title">
+                <!-- tuka treba da ide javascript -->
+                <h1>Califonia 3 Seater</h1> 
+            </div>
+            <div class="pricetag">
+                $<span>150</span>
+            </div>
+            <div class="Description">
+                <h4>Description:</h4>
+                <ul>
+                    <li>made from material resilient to uv rays</li>
+                    <li>height: width: length:</li>
+                    <li>packed with comftrable cushions </li>
+                </ul>
+            </div>
+            <div class="choose_color">
+                <h3>SELECT A COLOR:</h3>
+                <ul>
+                    <li id="colorVariant1"><img src="sliki_gradina/cali_brown.png"width="80px" alt=""></li>
+                    <li id="colorVariant2"><img src="sliki_gradina/svg1.png" width="80px""></li>
+                </ul>
+            </div>
+            <div class="add_cart">
+                <button id="addToCartButton" data-product-id="1">ADD TO CART</button>
+            </div>
+            <div class="quantity-selector">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantityCAL" name="quantity" value="1" min="1">
+                <button id="submitQuantity" class="button_quantity">Submit</button>
+                
+            </div>
+        </div>
+        <div class="album-photos">
+            <ul>
+                <li><img src="sliki_gradina/cali_model.png"  alt=""></li>
+                <li><img src="sliki_gradina/cali_dimenzii.png" alt=""></li>
+                <li><img src="sliki_gradina/cali_live.jpg" alt=""></li>
+            </ul>
+        </div>
+    </section>
+    <div class="scrollable-div">
+        <h3>Comment Section:</h3>
+        <div class="comment-section"></div>
+        <input type="text" placeholder="add a review of the product:" class="input-field">
+        <button class="review-button" onclick="
+            addComment();
+        ">post</button>
+        </div>
+
+    
+    <script>
+   
+   const Reviews=['i love the furniture, it looks great in my garden','i am surprised how well this material held on']
+    renderList();
+    function renderList(){
+        let review_HTML = '';
+        for(let i =0;i<Reviews.length;i++){
+            const comment = Reviews[i];
+            const html = '<div class="comment_layout"><div class="user"></div>'+comment+'</div>'
+            review_HTML += html;
+        }
+        document.querySelector('.comment-section').innerHTML = review_HTML;
+    }
+
+    function addComment(){
+        const inputElement = document.querySelector('.input-field');
+        const review = inputElement.value.trim();
+        if (review) { // Check if the input is not empty
+    Reviews.push(review);
+    console.log(Reviews);
+    inputElement.value = '';
+    renderList();
+} else {
+    // Optionally, alert the user or handle empty input
+    console.log("Comment is empty, not adding to the list.");
+}
+    }
+//*************heart icon da se zgolemi za edno koga kje go lajkneme**************
+     document.addEventListener("DOMContentLoaded", function() {
+        let likes = 10;
+        let isLiked = false;
+        const heartIcon = document.getElementById("heartIcon");
+        const likesCounter = document.getElementById("likesCount");
+    
+        heartIcon.addEventListener("click", function() {
+            isLiked = !isLiked;
+            if (isLiked) {
+                likes++; // Increase likes
+                heartIcon.classList.add("liked"); // Change icon appearance
+            } else {
+                likes--; // Decrease likes
+                heartIcon.classList.remove("liked"); // Revert icon appearance
+            }
+            likesCounter.textContent = likes; // Update likes display
+        });
+    });
+
+   
+
+//***********************califonia infos************************ */
+let productCali = {
+    name: 'california',
+    price: 150,
+    quantity: 1,
+    colorway: 'black',
+    image_Src:'sliki_gradina/svg1.png',
+    item_id:''
+    
+};
+// localStorage.removeItem('cart');
+document.addEventListener("DOMContentLoaded", function() {
+    // Attach click event listeners to color variants
+    document.getElementById("colorVariant1").addEventListener("click", function() {
+        document.getElementById("productImage").src = "sliki_gradina/cali_brown.png";
+        productCali.colorway = "brown";
+        productCali.image_Src = "sliki_gradina/cali_brown.png"
+    });
+    document.getElementById("colorVariant2").addEventListener("click", function() {
+        document.getElementById("productImage").src = "sliki_gradina/svg1.png";
+        productCali.colorway = "black";
+        productCali.image_Src = "sliki_gradina/svg1.png"
+    });
+
+    document.getElementById('addToCartButton').addEventListener('click', function() {
+        // Update the quantity from the input field when adding to cart
+        productCali.quantity = parseInt(document.getElementById("quantityCAL").value);
+        // poseben id za sekoj element
+        productCali.item_id = Date.now() +Math.floor(Math.random()*1000);
+
+        // Add to cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(productCali);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Product added to cart!');
+        
+        alert('displayed');
+        
+    });
+});
+    </script>
+</body>
+</html>
