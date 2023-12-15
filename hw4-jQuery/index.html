@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+    <h2>Filterable Table</h2>
+    <p>prebaraj na sekoe posebno po kolona:</p>  
+    First name: <input id="inputFirstName" type="text" placeholder="Search..">
+    Last name: <input id="inputLastName" type="text" placeholder="Search..">
+    Email: <input id="inputEmail" type="text" placeholder="Search..">
+    <br><br>
+
+<table>
+  <thead>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+  <tbody id="myTable">
+  <tr>
+    <td>marko</td>
+    <td>bunteski</td>
+    <td>john@example.com</td>
+  </tr>
+  <tr>
+    <td>Marko</td>
+    <td>Bunteski</td>
+    <td>bunteski13@gmail.com</td>
+  </tr>
+  <tr>
+    <td>Marija</td>
+    <td>Bunteski</td>
+    <td>marija@gmail.com</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Bunteski</td>
+    <td>john@example.com</td>
+  </tr>
+  <tr>
+    <td>Mary</td>
+    <td>Moe</td>
+    <td>mary@mail.com</td>
+  </tr>
+  <tr>
+    <td>July</td>
+    <td>Dooley</td>
+    <td>july@greatstuff.com</td>
+  </tr>
+  <tr>
+    <td>Anja</td>
+    <td>Ravendale</td>
+    <td>a_r@test.com</td>
+  </tr>
+  </tbody>
+</table>
+  
+<p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    
+      // Function to filter rows based on all input fields
+      function filterTable() {
+        var firstNameValue = $('#inputFirstName').val().toLowerCase();
+        var lastNameValue = $('#inputLastName').val().toLowerCase();
+        var emailValue = $('#inputEmail').val().toLowerCase();
+    
+        $("#myTable tr").filter(function() {
+          var row = $(this);
+          //.eq(1) / .eq(2) / .eq(0) ni kazhuvaat za koja kolona stanuva zbor , vleguva vo redica i go zema nth element i go sporeduva so vnesenoto od input correspondingly
+          var firstNameMatches = row.find('td').eq(0).text().toLowerCase().indexOf(firstNameValue) > -1; //delot kade shto gleda dali indexOf(certainValue)>-1, znachi deka ako ne e isto so lowercase od toa shto sme go vnele vo input ne go pokazhuvaj, toggle naprai mu da go snema
+          var lastNameMatches = row.find('td').eq(1).text().toLowerCase().indexOf(lastNameValue) > -1;
+          var emailMatches = row.find('td').eq(2).text().toLowerCase().indexOf(emailValue) > -1;
+           
+          row.toggle(firstNameMatches && lastNameMatches && emailMatches); //pravi za site elementi vo site redici za sekoja kolona posebno 
+        });
+      }
+    
+      // Attach the filterTable function to the keyup event of all input fields
+      $("#inputFirstName, #inputLastName, #inputEmail").on("keyup", filterTable); //filtriraj za sekoe pole odma shto kje se napishe shto bilo
+    
+    
+    </script>
+</body>
+</html>
